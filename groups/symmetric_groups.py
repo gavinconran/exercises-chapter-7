@@ -14,11 +14,14 @@ class SymmetricGroup(Group):
     symbol = "S"
 
     def _validate(self, value):
-        """Ensure that value is an allowed element value in this group."""
-        value = np.ndarray(value)
-        if not (sorted(value.shape) == [i for i in np.arange(self.n)]): 
-            raise ValueError("Element value must be a permutation of integers"
-                             f" in the range [0, {self.n})")
+        """Ensure that value is an allowed element value in this group."""                       
+        if (isinstance(value, str)):
+            raise ValueError("Element value must be a permutation of"
+                             f"integers in the range [0, {self.n})")
+        if not (sorted(np.ndarray(value).shape) == 
+                [i for i in np.arange(self.n)]): 
+                raise ValueError("Element value must be a permutation of"
+                             f"integers in the range [0, {self.n})")
 
     def operation(self, a, b):
         """Perform the group operation on two values.
