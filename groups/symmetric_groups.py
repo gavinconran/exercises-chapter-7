@@ -5,7 +5,7 @@ This version of the module uses inheritance.
 
 from numbers import Integral
 import numpy as np
-import example_code.groups.Group
+from example_code.groups import Group
 
 
 class SymmetricGroup(Group):
