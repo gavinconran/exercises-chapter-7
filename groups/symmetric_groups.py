@@ -4,7 +4,7 @@ This version of the module uses inheritance.
 """
 
 import numpy as np
-from numbers import Integral
+# from numbers import Integral
 from example_code.groups import Group
 
 
