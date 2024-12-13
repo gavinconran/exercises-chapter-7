@@ -4,6 +4,7 @@ This version of the module uses inheritance.
 """
 
 import numpy as np
+from numbers import Integral
 from example_code.groups import Group
 
 
@@ -17,7 +18,7 @@ class SymmetricGroup(Group):
         # if (isinstance(value, str)):
         #    raise ValueError("Element value must be a permutation of"
         #                     f"integers in the range [0, {self.n})")
-        if not (isinstance(value, np.array)
+        if not (isinstance(value.dtype, Integral)
                 and sorted(np.ndarray(value).shape)
                 == [i for i in np.arange(self.n)]):
             raise ValueError("Element value must be a permutation of "
