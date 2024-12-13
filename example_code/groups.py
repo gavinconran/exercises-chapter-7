@@ -67,7 +67,6 @@ class Group:
 
 
 class CyclicGroup(Group):
-
     """A cyclic group represented by integer addition modulo n."""
 
     symbol = "C"
