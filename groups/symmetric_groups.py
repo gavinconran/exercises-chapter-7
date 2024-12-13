@@ -19,7 +19,7 @@ class SymmetricGroup(Group):
         #    raise ValueError("Element value must be a permutation of"
         #                     f"integers in the range [0, {self.n})")
         if not (isinstance(value.dtype, Integral)
-                and sorted(np.ndarray(value).shape)
+                or sorted(np.ndarray(value).shape)
                 == [i for i in np.arange(self.n)]):
             raise ValueError("Element value must be a permutation of "
                              f"integers in the range [0, {self.n})")
