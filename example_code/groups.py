@@ -67,6 +67,7 @@ class Group:
 
 
 class CyclicGroup(Group):
+
     """A cyclic group represented by integer addition modulo n."""
 
     symbol = "C"
@@ -87,6 +88,7 @@ class CyclicGroup(Group):
 
 class GeneralLinearGroup(Group):
     """The general linear group represented by n x n matrices."""
+
     symbol = "G"
 
     def _validate(self, value):
