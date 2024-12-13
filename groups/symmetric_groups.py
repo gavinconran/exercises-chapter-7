@@ -18,8 +18,16 @@ class SymmetricGroup(Group):
         # if (isinstance(value, str)):
         #    raise ValueError("Element value must be a permutation of"
         #                     f"integers in the range [0, {self.n})")
-        if not (sum([isinstance(v, Integral) for v in value]) == self.n
-                or sorted(np.ndarray(value).shape)
+        # if not (sum([isinstance(v, Integral) for v in value]) == self.n
+        #        or sorted(np.ndarray(value).shape)
+        #        == [i for i in np.arange(self.n)]):
+        #    raise ValueError("Element value must be a permutation of "
+        #                     f"integers in the range [0, {self.n})")
+
+        if (isinstance(value, str)):
+            raise ValueError("Element value must be a permutation of"
+                             f"integers in the range [0, {self.n})")
+        if not (sorted(np.ndarray(value).shape)
                 == [i for i in np.arange(self.n)]):
             raise ValueError("Element value must be a permutation of "
                              f"integers in the range [0, {self.n})")
