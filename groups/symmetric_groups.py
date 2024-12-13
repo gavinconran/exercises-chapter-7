@@ -15,9 +15,9 @@ class SymmetricGroup(Group):
 
     def _validate(self, value):
         """Ensure that value is an allowed element value in this group."""
-        value = np.ndarray(value) # sort
-        if not (len(value) == self.n and sorted(value) == [i for i in np.arange(self.n)]): 
-            raise ValueError("Element value must be an integer"
+        value = np.ndarray(value)
+        if not (sorted(value.shape) == [i for i in np.arange(self.n)]): 
+            raise ValueError("Element value must be a permutation of integers"
                              f" in the range [0, {self.n})")
 
     def operation(self, a, b):
