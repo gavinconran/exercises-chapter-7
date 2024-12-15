@@ -8,7 +8,7 @@ from numbers import Integral
 
 class VerifiedSet(set):
     """A parent of other classes which have particular verification rules."""
-    
+
     symbol = 'VS'
 
     def __init__(self, new_set):
@@ -38,10 +38,10 @@ class VerifiedSet(set):
         for value in values:
             self._verify(value)
         return super().symmetric_difference_update(values)
-        
+
 
 class IntSet(VerifiedSet):
-    """Only integers are allowed"""
+    """Only integers are allowed."""
 
     symbol = 'IS'
 
