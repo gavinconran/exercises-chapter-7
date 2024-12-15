@@ -9,6 +9,15 @@ from numbers import Integral
 class VerifiedSet(set):
     """A parent of other classes which have particular verification rules."""
 
+    symbol = 'VS'
+
+    def __init__(self, new_set):
+        """Initialise object."""
+        if self.symbol == 'VS':
+            raise NotImplementedError
+        else:
+            super().__init__(new_set)
+
     def _verify(self, value):
         """Ensure that value is an allowed element value in this group."""
         raise NotImplementedError
@@ -33,6 +42,10 @@ class VerifiedSet(set):
 
 class IntSet(VerifiedSet):
     """Only integers are allowed."""
+
+    def __init__(self, new_set):
+        """Initialise IntSet object"""
+        super().__init__(new_set)
 
     def _verify(self, value):
         """Ensure that value is an integer in this group."""
