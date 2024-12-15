@@ -14,25 +14,25 @@ class VerifiedSet(set):
         raise NotImplementedError
 
     def add(self, value):
-        """Add element to set"""
+        """Add element to set."""
         self._verify(value)
         return super().add(value)
 
     def update(self, values):
-        """Update set with new set"""
+        """Update set with new set."""
         for value in values:
             self._verify(value)
         return super().update(values)
 
     def symmetric_difference_update(self, values):
-        """Update set and delete duplicates with new set"""
+        """Update set and delete duplicates with new set."""
         for value in values:
             self._verify(value)
         return super().symmetric_difference_update(values)
 
 
 class IntSet(VerifiedSet):
-    """Only integers are allowed"""
+    """Only integers are allowed."""
 
     def _verify(self, value):
         """Ensure that value is an integer in this group."""
@@ -41,13 +41,13 @@ class IntSet(VerifiedSet):
                 got a {type(value).__name__}.")
 
     def add(self, value):
-        """Add element to set"""
+        """Add element to set."""
         return super().add(value)
 
     def update(self, values):
-        """Update set with new set"""
+        """Update set with new set."""
         return super().update(values)
 
     def symmetric_difference_update(self, values):
-        """Update set and delete duplicates with new set"""
+        """Update set and delete duplicates with new set."""
         return super().symmetric_difference_update(values)
