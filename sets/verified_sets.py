@@ -3,7 +3,6 @@
 This version of the module uses inheritance.
 """
 
-import numpy as np
 from numbers import Integral
 
 
@@ -15,32 +14,40 @@ class VerifiedSet(set):
         raise NotImplementedError
 
     def add(self, value):
+        """Add element to set"""
         self._verify(value)
         return super().add(value)
 
     def update(self, values):
+        """Update set with new set"""
         for value in values:
             self._verify(value)
         return super().update(values)
 
     def symmetric_difference_update(self, values):
+        """Update set and delete duplicates with new set"""
         for value in values:
             self._verify(value)
-        return super().symmetric_difference_update(values)        
+        return super().symmetric_difference_update(values)
 
 
 class IntSet(VerifiedSet):
     """Only integers are allowed"""
 
     def _verify(self, value):
-        if not isinstance(value, Integral): 
-            raise TypeError(f"IntSet expected an integer, got a {type(value).__name__}.")
+        """Ensure that value is an integer in this group."""
+        if not isinstance(value, Integral):
+            raise TypeError(f"IntSet expected an integer, \
+                got a {type(value).__name__}.")
 
     def add(self, value):
+        """Add element to set"""
         return super().add(value)
 
     def update(self, values):
+        """Update set with new set"""
         return super().update(values)
 
     def symmetric_difference_update(self, values):
+        """Update set and delete duplicates with new set"""
         return super().symmetric_difference_update(values)
