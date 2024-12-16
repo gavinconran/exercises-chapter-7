@@ -8,6 +8,7 @@ from numbers import Integral
 
 class UniquenessError(KeyError):
     """Exception Class."""
+
     pass
 
 
