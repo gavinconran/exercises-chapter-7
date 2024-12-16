@@ -122,3 +122,21 @@ class IntSet(VerifiedSet):
     def copy(self):
         """Return a deep copy of self."""
         return IntSet(super().copy())
+
+
+class UniqueSet(VerifiedSet):
+    """Only values not in set can be added."""
+
+    symbol = 'QS'
+
+    def __init__(self, new_set):
+        """Initialise UniqueSet object."""
+        super().__init__(new_set)
+
+    def _verify(self, value):
+        """Ensure that value is an integer in this group."""
+        if not isinstance(value, Integral):
+            raise TypeError(f"IntSet expected an integer, \
+                got a {type(value).__name__}.")
+        if value in self:
+            raise UniquenessError
