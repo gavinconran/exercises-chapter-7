@@ -3,6 +3,7 @@
 This version of the module uses inheritance.
 """
 
+# all tests passed
 from numbers import Integral
 
 
