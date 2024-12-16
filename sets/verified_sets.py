@@ -7,6 +7,7 @@ from numbers import Integral
 
 
 class UniquenessError(KeyError):
+    """Exception Class."""
     pass
 
 
@@ -62,17 +63,14 @@ class VerifiedSet(set):
         return super().difference(other)
 
     def symmetric_difference(self, other):
-        """
-        Return set containing all items from both sets, 
-        except items that are present in both sets.
-        """
+        """Return set of items in both sets, except those present in both."""
         for item in other:
             self._verify(item)
         return super().symmetric_difference(other)
 
     def copy(self):
-        """Return a deep copy of self"""
-        return super().copy()    
+        """Return a deep copy of self."""
+        return super().copy()
 
 
 class IntSet(VerifiedSet):
@@ -114,15 +112,12 @@ class IntSet(VerifiedSet):
         """Return set containing items only existing in set x, not set y."""
         for item in other:
             self._verify(item)
-        return IntSet(super().difference(other))    
+        return IntSet(super().difference(other))
 
     def symmetric_difference(self, other):
-        """
-        Return set containing all items from both sets, 
-        except items that are present in both sets.
-        """
+        """Return set of items in both sets, except those present in both."""
         return IntSet(super().symmetric_difference(other))
 
     def copy(self):
-        """Return a deep copy of self"""
+        """Return a deep copy of self."""
         return IntSet(super().copy())
