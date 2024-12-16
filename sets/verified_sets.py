@@ -6,6 +6,10 @@ This version of the module uses inheritance.
 from numbers import Integral
 
 
+class UniquenessError(KeyError):
+    pass
+
+
 class VerifiedSet(set):
     """A parent of other classes which have particular verification rules."""
 
@@ -39,6 +43,37 @@ class VerifiedSet(set):
             self._verify(value)
         return super().symmetric_difference_update(values)
 
+    def union(self, other):
+        """Create a newset of self union other."""
+        for item in other:
+            self._verify(item)
+        return super().union(other)
+
+    def intersection(self, other):
+        """Create a newset of self intersect other."""
+        for item in other:
+            self._verify(item)
+        return super().intersection(other)
+
+    def difference(self, other):
+        """Return set containing items only existing in set x, not set y."""
+        for item in other:
+            self._verify(item)
+        return super().difference(other)
+
+    def symmetric_difference(self, other):
+        """
+        Return set containing all items from both sets, 
+        except items that are present in both sets.
+        """
+        for item in other:
+            self._verify(item)
+        return super().symmetric_difference(other)
+
+    def copy(self):
+        """Return a deep copy of self"""
+        return super().copy()    
+
 
 class IntSet(VerifiedSet):
     """Only integers are allowed."""
@@ -66,3 +101,28 @@ class IntSet(VerifiedSet):
     def symmetric_difference_update(self, values):
         """Update set and delete duplicates with new set."""
         return super().symmetric_difference_update(values)
+
+    def union(self, other):
+        """Create a newset of self union other."""
+        return IntSet(super().union(other))
+
+    def intersection(self, other):
+        """Create a newset of self intersect other."""
+        return IntSet(super().intersection(other))
+
+    def difference(self, other):
+        """Return set containing items only existing in set x, not set y."""
+        for item in other:
+            self._verify(item)
+        return IntSet(super().difference(other))    
+
+    def symmetric_difference(self, other):
+        """
+        Return set containing all items from both sets, 
+        except items that are present in both sets.
+        """
+        return IntSet(super().symmetric_difference(other))
+
+    def copy(self):
+        """Return a deep copy of self"""
+        return IntSet(super().copy())
